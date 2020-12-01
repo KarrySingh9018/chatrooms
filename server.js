@@ -4,21 +4,21 @@ var path = require('path');
 var mime = require('mime');
 var cache = {};
 
-//if resource is not found
+/*--- If resource is not found ---*/
 function send404(response) {
     response.writeHead(404, {'Content-Type': 'text/plain'});
     response.write('Error 404: resource not found.');
     response.end();
     }
 
-//serves file data
+/*-- Serving File Data ---*/
 function sendFile(response, filePath, fileContents) {
     response.writeHead(200,
     {"content-type": mime.lookup(path.basename(filePath))} );
     response.end(fileContents);
     }
 
-//serving static files
+/*--- Serving Static Files ---*/
 function serveStatic(response, cache, absPath) {
     if (cache[absPath]) {
         sendFile(response, absPath, cache[absPath]);
@@ -40,7 +40,7 @@ function serveStatic(response, cache, absPath) {
      }
  }
 
-//creating HTTP server
+/*--- Creating HTTP Server ---*/
 var server = http.createServer(function(request, response) {
 var filePath = false;
 if (request.url == '/') {
@@ -52,11 +52,11 @@ var absPath = './' + filePath;
 serveStatic(response, cache, absPath);
 });
 
-//starting the server
+/*--- Starting the Server ---*/
 server.listen(3000, function() {
     console.log("Server listening on port 3000.");
     });
 
-//setting up the Socket.IO server
+/*--- Setting up the Socket.io Server ---*/
 var chatServer = require('./lib/chat_server');
 chatServer.listen(server);
