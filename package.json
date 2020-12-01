@@ -1,7 +1,7 @@
 {
     "name": "chatrooms",
     "version": "0.0.1",
-    "description": "Minimalist multiroom chat server",
+    "description": "Minimal Multi-Room Chat Application",
     "dependencies": {
         "clear": "^0.1.0",
         "mime": "~1.2.7",
