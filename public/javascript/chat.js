@@ -1,3 +1,7 @@
+/**
+* Created By Ramanpreet Singh
+*/
+
 //relaying messages and name/room changes
 var Chat = function(socket) {
     this.socket = socket;
