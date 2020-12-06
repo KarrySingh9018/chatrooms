@@ -1,3 +1,7 @@
+/**
+* Created By Harekam Singh
+*/
+
 //untrusted data created by users
 function divEscapedContentElement(message) {
     return $('<div></div>').text(message);
